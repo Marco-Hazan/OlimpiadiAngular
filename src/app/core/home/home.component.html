@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="sticky-top">
+        <div class="row p-3" style="background-color:aliceblue">
+            <div class = "col-3">
+                <img class="img-fluid" style="width:30%" src="assets/images/logo.png" alt="logo">
+            </div>
+            <div class="col-6 text-center font">
+                <a class="navbar-brand font-weight-bold" href="index.html"> Olimpiazzon</a>
+            </div>
+        </div>
+        <div class="row bg-primary text-white">
+            <div class="col"> 
+                <a class ="btn btn-sm btn-primary m-2" href="index.html">Home</a>
+                <a class ="btn btn-sm btn-primary m-2" href="index.html">Atleti</a>
+                <a class ="btn btn-sm btn-primary m-2" href="sport.html">Sport</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3 p-2">
+            <button (click) = "categoriaSelezionata = ''" class="btn btn-block btn-sm btn-outline-success">Tutte le categorie</button>
+            <button *ngFor="let cat of getCategorie()" (click) = "categoriaSelezionata = cat"
+             class="btn btn-block btn-sm btn-success">{{cat}}</button>
+        </div>
+        <div  id="atleti" class="col-8 m-1 p-1" >
+            <div class="row justify-content-center align-items-center">
+                <div class="card-columns">
+                    <div *ngFor="let atleta of getAtleti()" class="card m-1 p-1 bg-warning text-center align-items-center card-athlete">
+                        <img class="card-img-top img-fluid w-75" src="assets/images/{{getFoto(atleta.nome)}}" alt="Card image cap">
+                        <h4>
+                            <span class="badge badge-pill badge-primary bg-primary">
+                                {{atleta.nome}}
+                            </span>
+                            
+                        </h4>
+                        <p class="card-text">
+                            {{atleta.descrizione}}
+                        </p>
+                        <div class="text-center">
+                            {{atleta.categoria}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
