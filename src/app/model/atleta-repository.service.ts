@@ -7,9 +7,9 @@ export class AtletaRepositoryService {
 
   constructor(private repo:RepositoryService) { }
 
-  getAllAtleti(disciplina:string):Atleta[]{
-    if(disciplina != ""){
-      return this.repo.getAtleti().filter(atleta => atleta.categoria == disciplina);
+  getAllAtleti(nazione:string):Atleta[]{
+    if(nazione != ""){
+      return this.repo.getAtleti().filter(atleta => atleta.nazione == nazione);
     }
     return this.repo.getAtleti();
   }

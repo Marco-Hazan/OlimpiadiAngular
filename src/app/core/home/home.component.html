@@ -18,9 +18,9 @@
     </div>
     <div class="row">
         <div class="col-3 p-2">
-            <button (click) = "categoriaSelezionata = ''" class="btn btn-block btn-sm btn-outline-success">Tutte le categorie</button>
-            <button *ngFor="let cat of getCategorie()" (click) = "categoriaSelezionata = cat"
-             class="btn btn-block btn-sm btn-success">{{cat}}</button>
+            <button (click) = "nazioneSelezionata = ''" class="btn btn-block btn-sm btn-outline-success">Tutte le nazioni</button>
+            <button *ngFor="let nazione of getNazioni()" (click) = "nazioneSelezionata = nazione"
+             class="btn btn-block btn-sm btn-success">{{nazione}}</button>
         </div>
         <div  id="atleti" class="col-8 m-1 p-1" >
             <div class="row justify-content-center align-items-center">
@@ -37,7 +37,7 @@
                             {{atleta.descrizione}}
                         </p>
                         <div class="text-center">
-                            {{atleta.categoria}}
+                            {{atleta.nazione}}
                         </div>
                     </div>
                 </div>

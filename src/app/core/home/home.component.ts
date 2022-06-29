@@ -11,15 +11,21 @@ export class HomeComponent implements OnInit {
 
   constructor(private atletaService: AtletaRepositoryService) { }
 
-  categoriaSelezionata:string = "";
+  nazioneSelezionata:string = "";
 
   getAtleti(): Atleta[]{
-    return this.atletaService.getAllAtleti(this.categoriaSelezionata);
+    return this.atletaService.getAllAtleti(this.nazioneSelezionata);
   }
 
   getCategorie(): string[]{
     return this.atletaService.getCategorie();
   }
+
+  getNazioni(): string[]{
+    return this.atletaService.getNazioni();
+  }
+
+
 
 
 
