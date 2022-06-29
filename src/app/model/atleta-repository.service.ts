@@ -7,12 +7,16 @@ export class AtletaRepositoryService {
 
   constructor(private repo:RepositoryService) { }
 
-  getAllAtleti(nazione:string):Atleta[]{
+  getAllAtleti(nazione:string, mostratutti:boolean):Atleta[]{
+    let atletifilter: Atleta[] = [];
     if(nazione != ""){
-      return this.repo.getAtleti().filter(atleta => atleta.nazione == nazione);
+       atletifilter =  this.repo.getAtleti().filter(atleta => atleta.nazione == nazione);
     }
-    return this.repo.getAtleti();
-  }
+    if(!mostratutti){
+      atletifilter =  this.repo.getAtleti().filter(atleta => !atleta.selezionato);
+    }
+    return atletifilter;
+    }
 
   getCategorie():string[]{
     return this.repo.getAtleti()

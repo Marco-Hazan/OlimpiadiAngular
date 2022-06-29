@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Atleta } from 'src/app/model/Atleta';
 import { AtletaRepositoryService } from 'src/app/model/atleta-repository.service';
+import { OlimpioniciService } from 'src/app/model/olimpionici-service';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +10,13 @@ import { AtletaRepositoryService } from 'src/app/model/atleta-repository.service
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private atletaService: AtletaRepositoryService) { }
+  constructor(private atletaService: AtletaRepositoryService, private olimpioniciService:OlimpioniciService) { }
 
   nazioneSelezionata:string = "";
+  mostraTutti:boolean = false;
 
   getAtleti(): Atleta[]{
-    return this.atletaService.getAllAtleti(this.nazioneSelezionata);
+    return this.atletaService.getAllAtleti(this.nazioneSelezionata,this.mostraTutti);
   }
 
   getCategorie(): string[]{
@@ -25,8 +27,27 @@ export class HomeComponent implements OnInit {
     return this.atletaService.getNazioni();
   }
 
+  seleziona(atleta:Atleta){
+    atleta.selezionato = true;
+    this.olimpioniciService.aggiungi(atleta);
+  }
 
+  deseleziona(atleta:Atleta){
+    atleta.selezionato = false;
+    this.olimpioniciService.rimuovi(atleta);
+  }
 
+  get quantitaSelezionati(){
+    return this.olimpioniciService.getQuantita();
+  }
+
+  setMostraTutti(checkMostraTutti: HTMLInputElement){
+    if(checkMostraTutti.checked){
+      this.mostraTutti = false;
+    }else{
+      this.mostraTutti = true;
+    }
+  }
 
 
   getFoto(nome:string):string{
