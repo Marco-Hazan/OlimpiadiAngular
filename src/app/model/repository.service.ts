@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Atleta } from './Atleta';
+import { Selezione } from './Selezione';
 
 @Injectable()
 export class RepositoryService {
@@ -45,5 +46,9 @@ export class RepositoryService {
 
   getAtleti(): Atleta[]{
     return this.atleti;
+  }
+
+  save(selezione: Selezione){
+    console.log(JSON.stringify(selezione));
   }
 }

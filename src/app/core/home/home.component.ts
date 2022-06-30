@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Atleta } from 'src/app/model/Atleta';
 import { AtletaRepositoryService } from 'src/app/model/atleta-repository.service';
-import { OlimpioniciService } from 'src/app/model/olimpionici-service';
+import { OlimpioniciService } from 'src/app/model/olimpionici.service';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   mostraTutti:boolean = false;
 
   getAtleti(): Atleta[]{
-    return this.atletaService.getAllAtleti(this.nazioneSelezionata,this.mostraTutti);
+    return this.atletaService.getAllAtleti(this.nazioneSelezionata,!this.mostraTutti);
   }
 
   getCategorie(): string[]{
